@@ -89,6 +89,8 @@ import (
   "github.com/marcelocarlos/multikv/backends/gcs"
   // ...
 )
+
+func main() {
   // ...
   ctx := context.Background()
   client, err := storage.NewClient(ctx)
@@ -96,6 +98,7 @@ import (
   // Initializing kv
   kv := multikv.KV{Backend: backend}
   // ...
+}
 ```
 
 ## Storage format
