@@ -19,23 +19,25 @@ package main
 
 import (
   "fmt"
-  "path/filepath"
 
   "github.com/marcelocarlos/multikv"
   "github.com/marcelocarlos/multikv/backends/local"
 )
 
 func main() {
-  backend := local.NewLocalBackend()
+  backend, err := local.NewLocalBackend("/tmp/multikv")
+  if err != nil {
+    fmt.Println(err)
+  }
   kv := multikv.KV{Backend: backend}
-  key := "/tmp/test/mkv"
+  key := "test/key"
 
-  err := kv.Put(path, []byte("test"))
+  err = kv.Put(key, []byte("test"))
   if err != nil {
     fmt.Println(err)
   }
 
-  val, err := kv.Get(path)
+  val, err := kv.Get(key)
   if err != nil {
     fmt.Println(err)
   }
