@@ -25,19 +25,20 @@ import (
 )
 
 func main() {
+  // Initializing backend
   backend, err := local.NewLocalBackend("/tmp/multikv")
   if err != nil {
     fmt.Println(err)
   }
+  // Initializing kv
   kv := multikv.KV{Backend: backend}
-  key := "test/key"
-
-  err = kv.Put(key, []byte("test"))
+  // Put example
+  err = kv.Put("test/key", []byte("test"))
   if err != nil {
     fmt.Println(err)
   }
-
-  val, err := kv.Get(key)
+  // Get example
+  val, err := kv.Get("test/key")
   if err != nil {
     fmt.Println(err)
   }
