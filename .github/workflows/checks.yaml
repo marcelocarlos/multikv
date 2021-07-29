@@ -34,4 +34,6 @@ jobs:
             ${{ runner.os }}-go-
 
       - name: Tests
-        run: go test -v ./...
+        run: |
+          docker run --rm  -d --name fake-gcs-server -p 4443:4443 fsouza/fake-gcs-server -public-host localhost:4443
+          go test -v ./...
