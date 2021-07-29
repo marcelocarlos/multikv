@@ -76,11 +76,11 @@ go test -v ./...
 
 ### Local
 
-The `local` backend allows `multikv` to use a local filesystem as the key/value storage layer. See the example above to see it in practice.
+The `local` backend allows `multikv` to use a local filesystem as the key/value storage layer. See the [example usage](#example-usage) we provided earlier see it in practice.
 
 ### GCS
 
-The `gcs` backend allows `multikv` to use Google Cloud Storage (GCS) as the key/value storage layer. To use it, you can use the example we provided above and just backend, for example:
+The `gcs` backend allows `multikv` to use Google Cloud Storage (GCS) as the key/value storage layer. To use it, you can tweak the [example usage](#example-usage) we provided earlier and change backend, for example:
 
 ```go
 import (
