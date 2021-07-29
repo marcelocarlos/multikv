@@ -1,8 +1,12 @@
 # multikv
 
+MultiKV is a simple and extensible library to manage file and path-based key/value stores for multiple storage backends, such as local storage, AWS S3 and Google Cloud Storage.
+
+This library is not intended to be high performance, support high volume workloads or store large amounts of data. Instead, the goal is to provide a quick and easy way to create simple key/value stores. Additional features and optimizations such as encryption at rest, replication, authentication, authorization, and others are left to be managed by the storage backends (e.g. KMS encryption in a S3 or GCS bucket).
+
 <!-- toc -->
 
-- [Instalation](#instalation)
+- [Installation](#installation)
 - [Example usage](#example-usage)
 - [Testing](#testing)
 - [Backends](#backends)
@@ -12,10 +16,6 @@
 - [Roadmap](#roadmap)
 
 <!-- tocstop -->
-
-MultiKV is a simple and extensible library to manage file and path-based key/value stores for multiple storage backends, such as local storage, AWS S3 and Google Cloud Storage.
-
-This library is not intended to be high performance, support high volume workloads or store large amounts of data. Instead, the goal is to provide a quick and easy way to create simple key/value stores. Additional features and optimizations such as encryption at rest, replication, authentication, authorization, and others are left to be managed by the storage backends (e.g. KMS encryption in a S3 or GCS bucket).
 
 ## Installation
 
