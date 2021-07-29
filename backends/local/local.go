@@ -69,24 +69,6 @@ func (c LocalBackend) ListDir(path string) ([]string, error) {
 	return files, nil
 }
 
-func (c LocalBackend) IsDir(path string) (bool, error) {
-	keyPath := filepath.Join(c.BasePath, path)
-	fileinfo, err := os.Stat(keyPath)
-	if err != nil {
-		return false, err
-	}
-	return fileinfo.IsDir(), nil
-}
-
-func (c LocalBackend) IsFile(path string) (bool, error) {
-	keyPath := filepath.Join(c.BasePath, path)
-	fileinfo, err := os.Stat(keyPath)
-	if err != nil {
-		return false, err
-	}
-	return !fileinfo.IsDir(), nil
-}
-
 func (c LocalBackend) Exist(path string) (bool, error) {
 	keyPath := filepath.Join(c.BasePath, path)
 	_, err := os.Stat(keyPath)

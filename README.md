@@ -1,10 +1,23 @@
 # multikv
 
+<!-- toc -->
+
+- [Instalation](#instalation)
+- [Example usage](#example-usage)
+- [Testing](#testing)
+- [Backends](#backends)
+  * [Local](#local)
+  * [GCS](#gcs)
+- [Storage format](#storage-format)
+- [Roadmap](#roadmap)
+
+<!-- tocstop -->
+
 MultiKV is a simple and extensible library to manage file and path-based key/value stores for multiple storage backends, such as local storage, AWS S3 and Google Cloud Storage.
 
 This library is not intended to be high performance, support high volume workloads or store large amounts of data. Instead, the goal is to provide a quick and easy way to create simple key/value stores. Additional features and optimizations such as encryption at rest, replication, authentication, authorization, and others are left to be managed by the storage backends (e.g. KMS encryption in a S3 or GCS bucket).
 
-## Instalation
+## Installation
 
 ```shell
 go get github.com/marcelocarlos/multikv
@@ -53,9 +66,21 @@ Tests are executed in CI, but if you want to run them locally first, run:
 ```shell
 # Run lint
 docker run --rm -v $(pwd):/app -w /app golangci/golangci-lint:v1.41.0 golangci-lint run
-# Test
+
+# Test - we use fake-gcs-server to spin up a local GCS server so we can safely run the tests
+docker run --rm  -d --name fake-gcs-server -p 4443:4443 fsouza/fake-gcs-server -public-host localhost:4443
 go test -v ./...
 ```
+
+## Backends
+
+### Local
+
+The `local` backend allows `multikv` to use a local filesystem as the key/value storage layer.
+
+### GCS
+
+The `gcs` backend allows `multikv` to use Google Cloud Storage (GCS) as the key/value storage layer.
 
 ## Storage format
 
@@ -75,10 +100,8 @@ The `data` file contains the base64-encoded value of the corresponding `key`. Th
 
 ## Roadmap
 
-- v0.2
-  - gcs backend
 - v0.3
-  - s3 backend
+  - S3 backend
 - v0.4
   - versioning support
 - v0.5
