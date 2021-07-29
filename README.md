@@ -76,11 +76,27 @@ go test -v ./...
 
 ### Local
 
-The `local` backend allows `multikv` to use a local filesystem as the key/value storage layer.
+The `local` backend allows `multikv` to use a local filesystem as the key/value storage layer. See the example above to see it in practice.
 
 ### GCS
 
-The `gcs` backend allows `multikv` to use Google Cloud Storage (GCS) as the key/value storage layer.
+The `gcs` backend allows `multikv` to use Google Cloud Storage (GCS) as the key/value storage layer. To use it, you can use the example we provided above and just backend, for example:
+
+```go
+import (
+  // ...
+  "cloud.google.com/go/storage"
+  "github.com/marcelocarlos/multikv/backends/gcs"
+  // ...
+)
+  // ...
+  ctx := context.Background()
+  client, err := storage.NewClient(ctx)
+  backend := gcs.NewGCSBackend(client, "my-gcs-bucket", ctx)
+  // Initializing kv
+  kv := multikv.KV{Backend: backend}
+  // ...
+```
 
 ## Storage format
 
