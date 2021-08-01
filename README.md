@@ -80,7 +80,7 @@ The `local` backend allows `multikv` to use a local filesystem as the key/value 
 
 ### GCS
 
-The `gcs` backend allows `multikv` to use Google Cloud Storage (GCS) as the key/value storage layer. To use it, you can tweak the [example usage](#example-usage) we provided earlier and change backend, for example:
+The `gcs` backend allows `multikv` to use Google Cloud Storage (GCS) as the key/value storage layer. To use it, you can tweak the [example usage](#example-usage) we provided earlier and change the backend, for example:
 
 ```go
 import (
@@ -119,14 +119,14 @@ The `data` file contains the base64-encoded value of the corresponding `key`. Th
 
 ## Roadmap
 
-- v0.3
-  - S3 backend
-- v0.4
-  - versioning support
-- v0.5
-  - PBE encryption (client-side encryption)
-- future plans
+There is no fixed roadmap yet, but planned features include:
+
+- Additional backends
+  - S3
+  - Google Drive (via API, you can already use it via the local backend)
+  - Dropbox (via API, you can already use it via the local backend)
   - Backblaze B2 backend
-  - Google Drive backend
-  - Dropbox backend
-  - Versioning optimizations (e.g. store diffs instead of full data for each version)
+- KV features
+  - PBE encryption (client-side encryption)
+  - value versioning support
+  - value versioning optimizations (e.g. store diffs instead of full data for each version)
